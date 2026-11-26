@@ -1,0 +1,232 @@
+{
+  "project": "phishing-detection-pipeline",
+  "version": "0.1.0",
+  "dataset": "UCI Phishing Websites",
+  "summary": {
+    "rows": 5849,
+    "phishing": 3019,
+    "legitimate": 2830,
+    "phishing_rate": 0.5162,
+    "features": 30,
+    "missing_values": 0,
+    "risk_bands": {
+      "0-5": 722,
+      "11-15": 1538,
+      "16-20": 270,
+      "21-30": 77,
+      "6-10": 3242
+    },
+    "ssl_states": {
+      "Valid": 3000,
+      "Phishing-like": 2128,
+      "Suspicious": 721
+    },
+    "mean_risk_count": 9.34
+  },
+  "splits": {
+    "train_rows": 4094,
+    "train_defaults": 2113,
+    "train_rate": 0.5161,
+    "val_rows": 877,
+    "val_defaults": 453,
+    "val_rate": 0.5165,
+    "test_rows": 878,
+    "test_defaults": 453,
+    "test_rate": 0.5159
+  },
+  "model": "hist_gradient_boosting",
+  "comparison": [
+    {
+      "model": "hist_gradient_boosting",
+      "pr_auc_mean": 0.9907101033663493,
+      "pr_auc_std": 0.00044175174136649835,
+      "roc_auc_mean": 0.9895215716939036,
+      "roc_auc_std": 0.0004918785069192932
+    },
+    {
+      "model": "extra_trees",
+      "pr_auc_mean": 0.9902097020057941,
+      "pr_auc_std": 0.0011838129920829314,
+      "roc_auc_mean": 0.988876342044504,
+      "roc_auc_std": 0.0014662202841056724
+    },
+    {
+      "model": "random_forest",
+      "pr_auc_mean": 0.9883584473375837,
+      "pr_auc_std": 0.001640754630974337,
+      "roc_auc_mean": 0.9863861666065238,
+      "roc_auc_std": 0.0017340227438434176
+    },
+    {
+      "model": "logistic_regression",
+      "pr_auc_mean": 0.9856604552735645,
+      "pr_auc_std": 0.000391659863452242,
+      "roc_auc_mean": 0.9837771524528817,
+      "roc_auc_std": 0.001027707277724957
+    }
+  ],
+  "policy": {
+    "threshold": 0.14,
+    "cost_per_1000": 96.92,
+    "recall": 0.9977924944812362,
+    "precision": 0.857685009487666,
+    "flagged_rate": 0.6009122006841505,
+    "missed_phishing": 1,
+    "false_alarms": 75,
+    "fn_cost": 10.0,
+    "fp_cost": 1.0
+  },
+  "test_optimal": {
+    "threshold": 0.07,
+    "cost_per_1000": 167.43,
+    "recall": 0.9933774834437086,
+    "precision": 0.7936507936507936,
+    "flagged_rate": 0.6457858769931663,
+    "missed_phishing": 3,
+    "false_alarms": 117,
+    "fn_cost": 10.0,
+    "fp_cost": 1.0
+  },
+  "test_metrics": {
+    "threshold": 0.14,
+    "rows": 878,
+    "accuracy": 0.8872,
+    "precision": 0.8302,
+    "recall": 0.9823,
+    "f1": 0.8999,
+    "roc_auc": 0.9855,
+    "pr_auc": 0.9874,
+    "brier": 0.0474,
+    "log_loss": 0.1532,
+    "confusion_matrix": {
+      "tn": 334,
+      "fp": 91,
+      "fn": 8,
+      "tp": 445
+    },
+    "flagged_rate": 0.6105,
+    "missed_phishing": 8,
+    "false_alarms": 91,
+    "cost": 171.0,
+    "model": "hist_gradient_boosting",
+    "calibration": "isotonic"
+  },
+  "feature_groups": [
+    {
+      "group": "content",
+      "features": 6,
+      "importance_mean": 0.1684,
+      "importance_std": 0.01329,
+      "top_feature": "URL_of_Anchor"
+    },
+    {
+      "group": "domain",
+      "features": 6,
+      "importance_mean": 0.05076,
+      "importance_std": 0.00567,
+      "top_feature": "SSLfinal_State"
+    },
+    {
+      "group": "url",
+      "features": 6,
+      "importance_mean": 0.01771,
+      "importance_std": 0.00318,
+      "top_feature": "Prefix_Suffix"
+    },
+    {
+      "group": "trust",
+      "features": 12,
+      "importance_mean": 0.01049,
+      "importance_std": 0.00481,
+      "top_feature": "web_traffic"
+    }
+  ],
+  "risk_tiers": [
+    {
+      "tier": "Low",
+      "sites": 328,
+      "phishing": 5,
+      "phishing_rate": 0.0152
+    },
+    {
+      "tier": "Moderate",
+      "sites": 84,
+      "phishing": 17,
+      "phishing_rate": 0.2024
+    },
+    {
+      "tier": "High",
+      "sites": 71,
+      "phishing": 42,
+      "phishing_rate": 0.5915
+    },
+    {
+      "tier": "Critical",
+      "sites": 395,
+      "phishing": 389,
+      "phishing_rate": 0.9848
+    }
+  ],
+  "top_features": [
+    {
+      "feature": "URL_of_Anchor",
+      "importance_mean": 0.15614,
+      "importance_std": 0.00935
+    },
+    {
+      "feature": "SSLfinal_State",
+      "importance_mean": 0.04649,
+      "importance_std": 0.00405
+    },
+    {
+      "feature": "Prefix_Suffix",
+      "importance_mean": 0.01594,
+      "importance_std": 0.00211
+    },
+    {
+      "feature": "SFH",
+      "importance_mean": 0.0069,
+      "importance_std": 0.00223
+    },
+    {
+      "feature": "web_traffic",
+      "importance_mean": 0.00535,
+      "importance_std": 0.0009
+    },
+    {
+      "feature": "Links_in_tags",
+      "importance_mean": 0.00347,
+      "importance_std": 0.00053
+    },
+    {
+      "feature": "having_Sub_Domain",
+      "importance_mean": 0.0025,
+      "importance_std": 0.00061
+    },
+    {
+      "feature": "suspicious_count",
+      "importance_mean": 0.0016,
+      "importance_std": 0.00035
+    },
+    {
+      "feature": "popUpWidnow",
+      "importance_mean": 0.00158,
+      "importance_std": 0.00124
+    },
+    {
+      "feature": "trust_risk_count",
+      "importance_mean": 0.00117,
+      "importance_std": 0.00093
+    },
+    {
+      "feature": "Links_pointing_to_page",
+      "importance_mean": 0.00115,
+      "importance_std": 0.00054
+    },
+    {
+      "feature": "Google_Index",
+      "importance_mean": 0.00115,
+      "importance_std": 0.00037
+    }
+  ]
+}
