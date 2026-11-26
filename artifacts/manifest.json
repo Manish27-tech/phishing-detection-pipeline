@@ -1,0 +1,160 @@
+{
+  "generated_at": "2026-11-26T17:56:07+00:00",
+  "file_count": 29,
+  "total_bytes": 2449644,
+  "metadata": {
+    "project": "phishing-detection-pipeline",
+    "version": "0.1.0",
+    "model": "hist_gradient_boosting",
+    "test_roc_auc": 0.9855,
+    "test_pr_auc": 0.9874,
+    "rows": 5849
+  },
+  "files": [
+    {
+      "path": "artifacts/calibration.csv",
+      "bytes": 216,
+      "sha256": "bb404ef4fa6be080a0807d30edb4174f2b717f9b6305121ff794e1148253db88"
+    },
+    {
+      "path": "artifacts/dashboard/feed.json",
+      "bytes": 5161,
+      "sha256": "61408e496a3a9716d115761464a4e59d96f3fa85b92d0d9b0db637938ace6918"
+    },
+    {
+      "path": "artifacts/dashboard/input_template.json",
+      "bytes": 833,
+      "sha256": "ae6efabd499f75a36f5512c714aa0b5ac077ca5de4809a12ac2c8e9674e37b5d"
+    },
+    {
+      "path": "artifacts/feature_groups.csv",
+      "bytes": 215,
+      "sha256": "b124c88de7d387f41b852e18b857ce57d37b86c9c6750c6d394dc7d174463fde"
+    },
+    {
+      "path": "artifacts/feature_importance.csv",
+      "bytes": 1195,
+      "sha256": "887e2ae40d2ad4bf7a7944fcf68821cf04521cf4c3637843d73fa58ae0e166cb"
+    },
+    {
+      "path": "artifacts/figures/01_class_balance.png",
+      "bytes": 21652,
+      "sha256": "f0b70313ef15b59638e02ad54f78c5c28cc6b5b092c3e0d9200900fe05c7764f"
+    },
+    {
+      "path": "artifacts/figures/02_risk_count_distribution.png",
+      "bytes": 30309,
+      "sha256": "d20e5e830de8cc8533c3a89cd7db22a57bc308c2775df23d8bd23b4a876a03d2"
+    },
+    {
+      "path": "artifacts/figures/03_correlation_heatmap.png",
+      "bytes": 71498,
+      "sha256": "dc1ff209553932969a6c1944e297cf4e666e83616889f769ee980f04038dcd1b"
+    },
+    {
+      "path": "artifacts/figures/04_feature_group_risk.png",
+      "bytes": 28419,
+      "sha256": "b0f601a192fbfe5404804d1acdad44e39d8ae789dceb18c8a132974e9f1de7a3"
+    },
+    {
+      "path": "artifacts/figures/05_model_comparison.png",
+      "bytes": 38237,
+      "sha256": "508704085a514cd3813b69e59995c3466e145fb823466b3cda69032d618d538c"
+    },
+    {
+      "path": "artifacts/figures/06_roc_pr.png",
+      "bytes": 54116,
+      "sha256": "8aa34e53ec9016b1f489cb2076cfaf12e90d09bc049e7333afbee268d6bbddd8"
+    },
+    {
+      "path": "artifacts/figures/07_calibration.png",
+      "bytes": 45813,
+      "sha256": "b16a970336a2e9ddbf753a553e7902112c8bdc002ff1e3931f6197fd4e6379d5"
+    },
+    {
+      "path": "artifacts/figures/08_confusion_matrix.png",
+      "bytes": 28807,
+      "sha256": "549e0857af258b6edaeb17204b8044dabfde8af304acc845bfe23f3a87efccab"
+    },
+    {
+      "path": "artifacts/figures/09_policy_curve.png",
+      "bytes": 50288,
+      "sha256": "a69a32b766e66271e1d4de9b08d060b410dc68fa806f6b22a76020e5a7f44ded"
+    },
+    {
+      "path": "artifacts/figures/10_feature_importance.png",
+      "bytes": 57343,
+      "sha256": "69707445a3bd790b33fe6726e613df958df6195d6dfebc8ce00ee5ab4ae1500f"
+    },
+    {
+      "path": "artifacts/figures/11_feature_group_importance.png",
+      "bytes": 28372,
+      "sha256": "e8fedf5e8c3671ffa64fdb9095bfe91325812fff737ecc646b7b713b6542c309"
+    },
+    {
+      "path": "artifacts/figures/12_risk_tiers.png",
+      "bytes": 32015,
+      "sha256": "cb19e15dd09c4e11514be5bb62a01c2ed77ee6d376fca57be45d9d808c3f496e"
+    },
+    {
+      "path": "artifacts/figures/13_operational_slices.png",
+      "bytes": 27040,
+      "sha256": "d716ce913e952a346d02b8a70bbf4222eac6ac38e962a161b3e6f4a53f2c9010"
+    },
+    {
+      "path": "artifacts/metrics.json",
+      "bytes": 5478,
+      "sha256": "919ad62a3d2313419cf262cedf9e070e70b849a8b52fd0f221b128909f011809"
+    },
+    {
+      "path": "artifacts/model_comparison.csv",
+      "bytes": 453,
+      "sha256": "857ef1e3ab83276429f186ad16e8af6cf10884ff30730a289775485bb4ba9964"
+    },
+    {
+      "path": "artifacts/phishing_model.joblib",
+      "bytes": 1859374,
+      "sha256": "6734932f23f03bec36ce88a79144d1c985f6fa9a60b3ff8a1e340e8443ed7762"
+    },
+    {
+      "path": "artifacts/policy_curve.csv",
+      "bytes": 10013,
+      "sha256": "bc2d95901f4f96dd30ac08bd972c8f8c82bcffb1e6ce2f7ea054e0b511f2efba"
+    },
+    {
+      "path": "artifacts/risk_tiers.csv",
+      "bytes": 120,
+      "sha256": "7b3016c4f1a68a7adb1c369c95429747b468bcca5d67f49aa836ea40fd5bf94a"
+    },
+    {
+      "path": "artifacts/test_scores.csv",
+      "bytes": 34873,
+      "sha256": "5684ef448d5c194c338c739c5bfea311a585b1550ac0464b34ea48105faaa8ce"
+    },
+    {
+      "path": "docs/index.html",
+      "bytes": 6446,
+      "sha256": "3f6d3f4534ed74b7f00251d5d6422e0ef4ff8707ebef979b8201b13c66f4b3d2"
+    },
+    {
+      "path": "docs/MODEL_CARD.md",
+      "bytes": 1900,
+      "sha256": "c32504c5eba57e3ec90397adf6e8abfa52e65f71ffc9cdf196ad8ea5a48b45e8"
+    },
+    {
+      "path": "docs/RESULTS.md",
+      "bytes": 1990,
+      "sha256": "799b274bc5a2a4ad6832b2c5a9c6f903f7d1ae0dbfc5005f5038229b268e08ec"
+    },
+    {
+      "path": "reports/MODEL_CARD.md",
+      "bytes": 1900,
+      "sha256": "c32504c5eba57e3ec90397adf6e8abfa52e65f71ffc9cdf196ad8ea5a48b45e8"
+    },
+    {
+      "path": "reports/REPORT.md",
+      "bytes": 5568,
+      "sha256": "ef63b2b1d93567b66940892e996c53bbae531aee40c33ca588fad5aa77a95470"
+    }
+  ]
+}
