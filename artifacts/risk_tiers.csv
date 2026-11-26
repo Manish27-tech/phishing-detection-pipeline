@@ -1,0 +1,5 @@
+tier,sites,phishing,phishing_rate
+Low,328,5,0.0152
+Moderate,84,17,0.2024
+High,71,42,0.5915
+Critical,395,389,0.9848
