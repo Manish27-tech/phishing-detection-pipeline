@@ -1,0 +1,5 @@
+group,features,importance_mean,importance_std,top_feature
+content,6,0.1684,0.01329,URL_of_Anchor
+domain,6,0.05076,0.00567,SSLfinal_State
+url,6,0.01771,0.00318,Prefix_Suffix
+trust,12,0.01049,0.00481,web_traffic
