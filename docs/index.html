@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phishing Detection Pipeline - Results</title>
+<style>
+:root { color-scheme: light; --ink:#17212b; --muted:#5c6b7a; --accent:#1f6f8b; --bg:#f6f8fa; --card:#fff; --line:#dce3ea; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--ink); background:var(--bg); line-height:1.55; }
+header { background:linear-gradient(135deg,#123b4a,#1f6f8b); color:#fff; padding:56px 24px; }
+header .wrap, main { max-width:1080px; margin:0 auto; }
+h1 { margin:0 0 8px; font-size:2.2rem; }
+header p { margin:0; color:#d7eef5; max-width:780px; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin:-30px auto 30px; max-width:1080px; padding:0 24px; }
+.kpi { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; box-shadow:0 8px 24px rgba(20,40,60,.07); }
+.kpi b { display:block; font-size:1.55rem; color:var(--accent); }
+.kpi span { color:var(--muted); font-size:.86rem; }
+main { padding:0 24px 60px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px; margin:20px 0; }
+h2 { margin-top:0; font-size:1.35rem; }
+table { width:100%; border-collapse:collapse; font-size:.92rem; }
+th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:600; }
+img { width:100%; height:auto; border-radius:10px; border:1px solid var(--line); margin-top:12px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px; }
+a { color:var(--accent); }
+code { background:#eef3f7; padding:2px 6px; border-radius:5px; }
+footer { color:var(--muted); text-align:center; padding:30px 24px 50px; font-size:.86rem; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Phishing Detection Pipeline</h1>
+<p>URL and domain risk scoring on the UCI Phishing Websites benchmark, with calibrated probabilities, a 10:1 cost-sensitive threshold and feature-group attribution.</p>
+</div></header>
+<div class="kpis">
+<div class="kpi"><b>0.986</b><span>ROC-AUC</span></div>
+<div class="kpi"><b>0.987</b><span>PR-AUC</span></div>
+<div class="kpi"><b>98.2%</b><span>Phishing recall</span></div>
+<div class="kpi"><b>83.0%</b><span>Precision</span></div>
+<div class="kpi"><b>97</b><span>Cost per 1,000</span></div>
+</div>
+<main>
+<section>
+<h2>What this project demonstrates</h2>
+<p>Thirty UCI indicators are aggregated by URL, domain, content and trust families, then modelled with four classifiers. The winner is calibrated and a cost-sensitive threshold is selected on validation. Feature-group attribution shows which indicator families drive risk.</p>
+<p><strong>Selected model:</strong> hist gradient boosting - <strong>Threshold:</strong> 0.14 - <strong>Cost ratio:</strong> 10:1</p>
+</section>
+<section>
+<h2>Model comparison</h2>
+<table><thead><tr><th>Model</th><th>CV PR-AUC</th><th>CV ROC-AUC</th></tr></thead><tbody><tr><td>hist gradient boosting</td><td>0.9907</td><td>0.9895</td></tr><tr><td>extra trees</td><td>0.9902</td><td>0.9889</td></tr><tr><td>random forest</td><td>0.9884</td><td>0.9864</td></tr><tr><td>logistic regression</td><td>0.9857</td><td>0.9838</td></tr></tbody></table>
+<img src="figures/05_model_comparison.png" alt="Model comparison">
+</section>
+<section>
+<h2>Test-set evaluation</h2>
+<div class="grid">
+<div><img src="figures/06_roc_pr.png" alt="ROC and precision-recall curves"></div>
+<div><img src="figures/07_calibration.png" alt="Calibration curve"></div>
+</div>
+<img src="figures/08_confusion_matrix.png" alt="Confusion matrix">
+<img src="figures/09_policy_curve.png" alt="Phishing policy curve">
+</section>
+<section>
+<h2>Risk tiers</h2>
+<table><thead><tr><th>Tier</th><th>Sites</th><th>Phishing</th><th>Observed phishing rate</th></tr></thead><tbody><tr><td>Low</td><td>328</td><td>5</td><td>1.52%</td></tr><tr><td>Moderate</td><td>84</td><td>17</td><td>20.24%</td></tr><tr><td>High</td><td>71</td><td>42</td><td>59.15%</td></tr><tr><td>Critical</td><td>395</td><td>389</td><td>98.48%</td></tr></tbody></table>
+<img src="figures/12_risk_tiers.png" alt="Risk tiers">
+</section>
+<section>
+<h2>Feature groups</h2>
+<table><thead><tr><th>Group</th><th>Features</th><th>Importance</th><th>Top feature</th></tr></thead><tbody><tr><td>content</td><td>6</td><td>0.16840</td><td>URL_of_Anchor</td></tr><tr><td>domain</td><td>6</td><td>0.05076</td><td>SSLfinal_State</td></tr><tr><td>url</td><td>6</td><td>0.01771</td><td>Prefix_Suffix</td></tr><tr><td>trust</td><td>12</td><td>0.01049</td><td>web_traffic</td></tr></tbody></table>
+<img src="figures/11_feature_group_importance.png" alt="Feature-group importance">
+</section>
+<section>
+<h2>Top indicators</h2>
+<table><thead><tr><th>Feature</th><th>Mean drop in AP</th><th>Std</th></tr></thead><tbody><tr><td>URL_of_Anchor</td><td>0.15614</td><td>0.00935</td></tr><tr><td>SSLfinal_State</td><td>0.04649</td><td>0.00405</td></tr><tr><td>Prefix_Suffix</td><td>0.01594</td><td>0.00211</td></tr><tr><td>SFH</td><td>0.00690</td><td>0.00223</td></tr><tr><td>web_traffic</td><td>0.00535</td><td>0.00090</td></tr><tr><td>Links_in_tags</td><td>0.00347</td><td>0.00053</td></tr><tr><td>having_Sub_Domain</td><td>0.00250</td><td>0.00061</td></tr><tr><td>suspicious_count</td><td>0.00160</td><td>0.00035</td></tr><tr><td>popUpWidnow</td><td>0.00158</td><td>0.00124</td></tr><tr><td>trust_risk_count</td><td>0.00117</td><td>0.00093</td></tr><tr><td>Links_pointing_to_page</td><td>0.00115</td><td>0.00054</td></tr><tr><td>Google_Index</td><td>0.00115</td><td>0.00037</td></tr></tbody></table>
+<img src="figures/10_feature_importance.png" alt="Permutation importance">
+</section>
+<section>
+<h2>Reproduce</h2>
+<p><code>python scripts/fetch_data.py</code><br><code>python -m phishing.pipeline</code><br><code>python -m phishing.cli check</code><br><code>streamlit run dashboard/app.py</code></p>
+<p>Full write-up: <a href="RESULTS.md">RESULTS.md</a> - <a href="METHODOLOGY.md">METHODOLOGY.md</a> - <a href="MODEL_CARD.md">MODEL_CARD.md</a></p>
+</section>
+</main>
+<footer>Dataset: UCI Phishing Websites (CC BY 4.0). Code: MIT. Metrics come from a fixed test split; see the manifest for checksums.</footer>
+</body>
+</html>
